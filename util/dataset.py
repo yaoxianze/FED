@@ -51,7 +51,7 @@ def get_dataset(args):
         n_train = len(dataset_train)
         y_train = np.array(dataset_train.targets)
 
-    elif args.dataset == 'clothing1m':
+    elif args.dataset == 'clothing1M':
         data_path = 'data/clothing1M/'
         args.num_classes = 14
         args.model = 'resnet50'

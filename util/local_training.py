@@ -5,7 +5,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, Dataset
 import torch.nn.functional as F
-import numpy as np 
+import numpy as np
 
 
 def mixup_data(x, y, alpha=1.0, use_cuda=True):
@@ -96,7 +96,7 @@ class LocalUpdate(object):
 
                 batch_loss.append(loss.item())
 
-            epoch_loss.append(sum(batch_loss)/len(batch_loss))
+            epoch_loss.append(sum(batch_loss) / len(batch_loss))
         return net.state_dict(), sum(epoch_loss) / len(epoch_loss)
 
 
@@ -117,3 +117,26 @@ def globaltest(net, test_dataset, args):
 
     acc = correct / total
     return acc
+
+
+def finaltest(net, test_dataset, args):
+    net.eval()
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=100, shuffle=False)
+    true_labels = []
+    pred_labels = []
+    with torch.no_grad():
+        correct = 0
+        total = 0
+        for images, labels in test_loader:
+            images = images.to(args.device)
+            labels = labels.to(args.device)
+            outputs = net(images)
+            # outputs = net(images)
+            _, predicted = torch.max(outputs.data, 1)
+            true_labels.extend(labels.cpu().numpy())
+            pred_labels.extend(predicted.cpu().numpy())
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+
+    acc = correct / total
+    return acc, true_labels, pred_labels

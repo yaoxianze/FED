@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="root@connect.bjb1.seetacloud.com:48854 password" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@connect.westb.seetacloud.com:15551 password" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="root@connect.bjb1.seetacloud.com:40401 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/FED" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@connect.bjb1.seetacloud.com:48854 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.westb.seetacloud.com:15551 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/FED" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.westb.seetacloud.com:15551 password (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/FED" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.westc.gpuhub.com:47107 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/FED" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.westc.gpuhub.com:57757 password">
         <serverdata>
           <mappings>
             <mapping deploy="/root/autodl-tmp/FED" local="$PROJECT_DIR$" />
@@ -10,6 +45,34 @@
         </serverdata>
       </paths>
       <paths name="root@region-41.seetacloud.com:23476 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@region-41.seetacloud.com:24512 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@region-41.seetacloud.com:24512 password (2)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@region-42.seetacloud.com:59514 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@region-45.autodl.pro:39712 password">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

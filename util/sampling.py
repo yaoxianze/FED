@@ -22,7 +22,7 @@ def non_iid_dirichlet_sampling(y_train, num_classes, p, num_users, seed, alpha_d
         invalid_idx = np.where(n_classes_per_client == 0)[0]  # 没有划分到类别的用户
         Phi[invalid_idx] = np.random.binomial(1, p, size=(len(invalid_idx), num_classes))  # 没有划分到类别的用户再次进行划分
         n_classes_per_client = np.sum(Phi, axis=1)
-    Psi = [list(np.where(Phi[:, j] == 1)[0]) for j in range(num_classes)]  # 一个列表，表中第i个元素表示分配到第i个类别的用户索引
+    Psi = [list(np.where(Phi[:, j] == 1)[0]) for j in range(num_classes)]  # 一个列表，表中第j个元素表示分配到第j个类别的用户索引
     num_clients_per_class = np.array([len(x) for x in Psi])  # 统计各个类别的用户数
     dict_users = {}
     for class_i in range(num_classes):  # 对各个样本类别进行分配

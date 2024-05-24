@@ -4,6 +4,8 @@ from sklearn.metrics import confusion_matrix
 from util.dataset import get_dataset
 from util.util import add_noise
 import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 import argparse
 import numpy as np
 
@@ -22,23 +24,6 @@ dataset_train, dataset_test, dict_users = get_dataset(args)
 # ---------------------Add Noise ---------------------------
 y_train = np.array(dataset_train.targets)
 y_train_noisy, gamma_s, real_noise_level = add_noise(args, y_train, dict_users)
-
-# %%
-# plot confusion matrix (take the first 5 clients for example)
-fig, axes = plt.subplots(1, 5, sharex=False, sharey=True, figsize=(18, 3), dpi=600)
-
-for i, ax in enumerate(axes):
-    idx = list(dict_users[i])
-    y_true = y_train[idx]
-    y_noisy = y_train_noisy[idx]
-    conf_matrix = confusion_matrix(y_true, y_noisy)
-    im = ax.imshow(conf_matrix, cmap=plt.cm.hot_r)
-    ax.set_yticks([])
-    ax.set_xticks([])
-    divider = make_axes_locatable(ax)
-    cax = divider.append_axes("right", size="5%", pad=0.3)
-    plt.colorbar(im, cax=cax)
-plt.show()
 # %% md
 # Below is code to plot the non-IID data distribution as shown in the README.md file
 # %%
@@ -97,7 +82,7 @@ n_train = len(dataset_train)
 y_train = np.array(dataset_train.targets)
 alpha = 10
 p = 0.7
-dict_users, mat = non_iid_dirichlet_sampling(y_train, 10, p, 100, 13, alpha)
+dict_users, mat = non_iid_dirichlet_sampling(y_train, 10, 0.7, 100, 13, 10)
 dict_users2, mat2 = non_iid_dirichlet_sampling(y_train, 10, 0.7, 100, 13, 1)
 dict_users3, mat3 = non_iid_dirichlet_sampling(y_train, 10, 0.3, 100, 13, 10)
 # print(mat)
@@ -124,11 +109,11 @@ def survey2(results, b2, b3, category_names):
     category_names : list of str
         The category labels.
     """
-    title = [r'p=0.7, $\alpha_{Dir}=10$', r'p=0.7, $\alpha_{Dir}=1$', r'p=0.3, $\alpha_{Dir}=10$']
+    title = [r'p=0.7, $\alpha=10$', r'p=0.7, $\alpha=1$', r'p=0.3, $\alpha=10$']
     labels = [i for i in range(100)]
     data = results
     data_cum = data.cumsum(axis=1)
-    category_colors = plt.get_cmap('tab20c')(  # tab20c
+    category_colors = plt.get_cmap('tab20c_r')(  # tab20c_r
         np.linspace(0.15, 0.85, data.shape[1]))  # RdYlGn 0.15, 0.85
 
     fig, axes = plt.subplots(1, 3, figsize=(29, 9))
@@ -162,7 +147,7 @@ category_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog'
 
 survey2(b, b2, b3, category_names)
 fig = matplotlib.pyplot.gcf()
-fig.set_size_inches(27, 9)
-plt.savefig('noniid_stat.eps', dpi=600)
+fig.set_size_inches(25, 9)
+plt.savefig('img/noniid_stat.jpg', bbox_inches='tight', dpi=500)
 
-plt.show()
+# plt.show()
